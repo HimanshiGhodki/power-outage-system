@@ -1,0 +1,49 @@
+#spring:
+#  application:
+#    name: zuul-gateway
+#  h2:
+#    console:
+#      enabled: true
+#      path: /h2-console
+#  datasource:
+#    url: jdbc:h2:mem:testzuul
+#    data: classpath:dta.sql
+#  zuul:
+#    routes:
+#      - id: incident-registration-client
+#        filters:
+#            args:
+#              name: incident-registration-client
+#              fallbackuri: forward:/incidentFallBack
+#      - id: customer-registration-client
+#          filters:
+#              args:
+#                name: customer-registration-client
+#                fallbackuri: forward:/customerFallBack
+#
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka
+#    register-with-eureka: true
+#    fetch-registry: true
+#    instance:
+#      hostname: localhost
+#
+#
+#server:
+#  port: 8100
+#
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: hystrix.straeam
+#
+#hystrix:
+#  command:
+#    fallbackcmd:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 5000
